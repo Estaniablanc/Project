@@ -1,0 +1,183 @@
+public class Person {
+		/**
+		   A person is represented by the name and a birth year.
+		   You must enter the class name, instance variable(s), and constructor below
+		*/
+		
+		
+		
+	     private String Name, birthYear;
+	      
+	      public Person(String Name, String birthYear) {
+	    	  this.Name=Name;
+	    	  this.birthYear=birthYear;
+	      }
+
+
+		/**
+		      Returns the string representation of the object.
+		      @return a string representation of the object
+		*/
+
+		public void p1(String name, String birthYear) {
+			this.Name=name;
+			this.birthYear=birthYear;
+			
+			System.out.println("Name: "+this.Name+"BirthYear: "+this.birthYear);
+			
+		}
+		public void p2(String name, String birthYear) {
+			this.Name=name;
+			this.birthYear=birthYear;
+			System.out.println("Name: "+this.Name+"BirthYear: "+this.birthYear);
+		}
+		
+		
+		
+		
+		   public String toString()
+		   {
+		      return "Person[name=" + Name + ",birthYear=" + birthYear + "]";
+		   }
+
+	}
+  //Instructor class
+  
+  public class Student extends Person     // The student class is taking infors from person
+	{                                                                
+
+	   public Student(String Name, String birthYear, String major) { // The parameters are additional info for the student
+			super(Name, birthYear);//parameters using from person class for this class  
+			this.Name=Name;                               
+			this.birthYear=birthYear;                    
+			this.major=major;                          
+			
+		}
+
+     
+
+	      
+	
+	   
+	   private String Name,birthYear, major; // variables
+		
+		
+		
+		
+		
+		
+		public void s1(String name, String birthYear, String major) {//method for student 1 storing name,birthYear and major
+			this.Name=name;
+			this.birthYear=birthYear;
+			this.major=major;
+			
+		//	System.out.println("[Name: "+this.Name+"[BirthYear: "+this.birthYear+"]"+"[major: "+major+"]");
+			
+			
+		}
+		public void s2(String name, String birthYear, String major) {//method for student 2 storing name,birthYear and major
+			this.Name=name;
+			this.birthYear=birthYear;
+			//this.major=major;
+		//	System.out.println("Name: "+this.Name+"BirthYear: "+this.birthYear+" major: "+major);
+		}
+		
+		
+		
+	   public String toString()//toString method to return info
+	   {
+	      return "Student[super=" + super.toString() + ",major=" + major + "]";
+	   }
+
+}
+
+public class Instructor extends Person // again Person is the super class so the Instructor class is taking infors from person
+	{
+
+	   public Instructor(String Name, String birthYear, String salary) {//again infors being put into instructor class
+		super(Name, birthYear);//infors taking from the super class person
+		
+		this.name=Name;
+		this.birthYear=birthYear;
+		this.salary=salary;
+	}
+
+
+	
+		 String Instructor,name,birthYear, salary;
+	
+	
+
+
+
+	   
+	public void i1(String Instructor, String birthYear, String salary) {/method for instructor 1 storing instructor,birthYear and salary
+		this.Instructor=name;
+		this.birthYear=birthYear;
+		this.salary=salary;
+		System.out.println("Name: "+this.Instructor+"BirthYear: "+this.birthYear+" Earning: "+salary);
+	}
+	
+	
+	   public String toString()
+	   {
+	      return "Instructor[super=" + super.toString() + ",salary=" + salary + "]";
+	   }
+
+	
+
+}
+//Tester class
+
+public class personTester {
+
+	
+		
+	 
+	
+		
+		   public static void main(String[] args)
+		   {
+		      /**
+		       * p1 is a Person "John" born in 1965
+		       * p2 is a Person "Mary Ann" born in 1970
+		       * s1 is a Student "Ann" born in 1982 and is a "Computer Science" major
+		       * s2 is a Student "Thomas" born in 1986 and is a "Biology" major
+		       * i1 is an Instructor "Joseph" born in 1954 earning 65000
+		       * 
+		       */
+			  
+				
+			   
+			   Person p1=new Person("John", "1965");
+		     System.out.println(p1.toString());//processing entered infor through the toString method
+		     System.out.println("");
+		      
+		      
+		      Person p2=new Person("Mary Ann", "1970");
+          System.out.println(p2.toString());
+		      System.out.println("");
+		      
+          
+		      Student s1=new Student("Ann", "1982","Computer Science");
+		      System.out.println(s1.toString());
+		      System.out.println("");
+		      
+          
+		      Student s2=new Student(" Thomas ", "1986","Biology" );
+		      System.out.println(s2.toString());
+		       System.out.println("");
+		      
+		      Instructor i1=new Instructor(" Joseph ", " 1954 ", " 65000 ");
+          System.out.println(i1.toString());
+		      
+		      {  }
+		}
+
+	}
+
+
+  
+  
+  
+  
