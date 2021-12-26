@@ -1,0 +1,28 @@
+public class TempCovert {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
+		      System.out.println("Fahrenheit"+ "\t\t"+ "Celcius");
+		 
+		 
+				for (int tempF=0; tempF<=212; tempF+=2) 
+				{
+					double tempC = (tempF -32)/ 1.8;
+				
+					System.out.format(tempF+ "\t\t\t%.2f%n ", tempC);
+					
+				}
+				//C-to-F table
+				
+		        
+	           System.out.println( "\nCelcius"+"\t\t"+"Fahrenheit" );
+				
+				for (int tempC=0; tempC<=373; tempC+=2) 
+				{
+					double tempF = tempC * 1.8 + 32;
+					System.out.format(tempC + "\t\t%.2f%n" , tempF);
+	}
+
+}}
