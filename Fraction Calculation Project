@@ -1,0 +1,348 @@
+public class Fraction {
+	 // data about a Fraction
+    private int numerator;
+    private int denominator;
+    private int commonFactor= numerator;
+    
+    // constructor #1
+    public Fraction(int n, int d)
+    {
+        // Set numerator and denominator instance variables from n and d
+        numerator=n;
+        denominator=d;
+        
+        reduce();
+    	
+    	
+        // Call the reduce method below to reduce the fraction.
+
+    }
+  
+    // constructor #2 (default constructor)
+    public Fraction() // default constructor has no inputs
+    {
+    	
+    	int GCF = numerator;
+       
+        
+    // While the greatest common factor is greater than 1:
+    while (GCF > 1) {}}
+    	 public static int greatestCommon(int a, int b)
+         {
+         
+        while ( a != 0 && b != 0)
+       // {
+            if (a >= b)
+            { 
+                a = a - b;
+            }
+            else
+                b = b - a;
+        //}
+        if (a == 0)
+        {
+            return b;
+            }
+         else 
+        {
+            return a;
+    }
+        
+    }
+
+    // methods
+    /**
+     * Reduce this Fraction
+     */
+    private void reduce()
+    {
+
+         // While the greatest common factor is greater than 1:
+        while (commonFactor > 1) {
+        	
+        	 //      The greatest common factor is the number that divides evenly into
+            //      both the numerator and denominator (use the % operator). Issue a
+            //      Reduce the value of greatest common factor by 1.
+            // End While
+        if (numerator % commonFactor == 0 && denominator % commonFactor == 0)
+          //      break when the greatest common factor is found.
+        	break;
+        //when its not found
+        else {
+            System.out.println();
+        }
+    }
+
+
+    	
+       
+        
+    }
+
+  
+    public String toString()
+    {
+        // return a String representation of the fraction, i.e.,
+        // numerator / denominator.
+        // If numerator is 3 and denominator is 5, the returned String
+        // will be "3/5".
+    	return numerator + "/" + denominator;
+    }
+
+
+    /**
+     * Add Fractions and return the resulting sum Fraction
+     */
+    public Fraction add(Fraction f1, Fraction f2)
+    {
+    	// You will need to get the sum of Fractions f1 and f2, resulting
+        // in a sumNumerator and sumDenominator that represents the sum.
+    	
+    	int sumNumerator;
+    	int sumDenominator;
+    	int newNumerator;
+    	int newNumerator2;
+        
+
+        // To access f1's numerator, use f1.numerator. To access f1's denominator,
+        // use f1.denominator, and so on.
+    	
+    	if(f1.denominator != f2.denominator) {
+    		sumDenominator = f1.denominator * f2.denominator;
+    	    newNumerator = f1.numerator * f2.denominator;
+    	    newNumerator2 = f2.numerator * f1.denominator;
+    	    sumNumerator = newNumerator + newNumerator2;
+
+        
+  
+    	 // Then you will need to construct a Fraction using the resulting
+        // sumNumerator and sumDenominator and return that Fraction.
+    	    Fraction sum = new Fraction(sumNumerator, sumDenominator);
+    	        return sum;
+    	        
+    	    } 
+    	    else {
+
+    	        int sumNumerators = f1.numerator + f2.numerator;
+    	        Fraction sum = new Fraction(sumNumerators, f1.denominator);
+    	        return sum;
+    	    }
+
+    }
+    
+    
+    
+    public static Fraction addFraction(Fraction f1, Fraction f2)
+    {
+    	int sumNumerator;
+    	int sumDenominator;
+    	int newNumerator;
+    	int newNumerator2;
+        
+
+        // To access f1's numerator, use f1.numerator. To access f1's denominator,
+        // use f1.denominator, and so on.
+    	
+    	if(f1.denominator != f2.denominator) {
+    		sumDenominator = f1.denominator * f2.denominator;
+    	    newNumerator = f1.numerator * f2.denominator;
+    	    newNumerator2 = f2.numerator * f1.denominator;
+    	    sumNumerator = newNumerator + newNumerator2;
+
+        
+  
+    	 // Then you will need to construct a Fraction using the resulting
+        // sumNumerator and sumDenominator and return that Fraction.
+    	    Fraction sum = new Fraction(sumNumerator, sumDenominator);
+    	        return sum;
+    	        
+    	    } 
+    	    else {
+
+    	        int sumNumerators = f1.numerator + f2.numerator;
+    	        Fraction sum = new Fraction(sumNumerators, f1.denominator);
+    	        return sum;
+    	    }
+
+		
+    	// You will need to get the sum of Fractions f1 and f2, resulting
+        // in a sumNumerator and sumDenominator that represents the sum.
+    }
+    
+    
+    
+    
+    
+    
+
+    /**
+     * Subtract Fractions and return the resulting difference Fraction
+     */
+    public Fraction subtract(Fraction f1, Fraction f2)
+    {
+    	int DofD;
+    	int DofN;
+    	int N1;
+    	int N2;
+    	
+    	if(f1.denominator != f2.denominator) {
+             DofD = f1.denominator * f2.denominator;
+             N1 = f1.numerator * f2.denominator;
+             N2 = f2.numerator * f1.denominator;
+             DofN = N1 - N2;
+
+            Fraction difference = new Fraction(DofN, DofD);
+            return difference;
+        } else {
+
+            int sumOfNumerators = numerator - f2.numerator;//i need to find where she put thst one 
+            Fraction difference = new Fraction(sumOfNumerators, denominator);
+            return difference;
+        }
+    }
+
+  /*  public static Fraction subtractFraction(Fraction f1, Fraction f2)
+    {
+    	int DofD;
+    	int DofN;
+    	int N1;
+    	int N2;
+    	
+    	if(f1.denominator != f2.denominator) {
+             DofD = f1.denominator * f2.denominator;
+             N1 = f1.numerator * f2.denominator;
+             N2 = f2.numerator * f1.denominator;
+             DofN = N1 - N2;
+            Fraction difference = new Fraction(DofN, DofD);
+            return difference;
+        } else {
+            int sumOfNumerators = numerator - f2.numerator;//i need to find where she put thst one 
+            Fraction difference = new Fraction(sumOfNumerators, denominator);
+            return difference;
+        }
+    }*/
+
+    
+    
+    
+    /**
+     * Multiply Fractions and return the resulting product Fraction
+     */
+    public Fraction multiply(Fraction f1, Fraction f2)
+    {
+    	int productOfNumerators;
+    	int productOfDenominators;
+    	
+    	productOfNumerators = f1.numerator * f2.numerator;
+        productOfDenominators = f1.denominator * f2.denominator;
+
+        Fraction product = new Fraction(productOfNumerators, productOfDenominators);
+        return product;
+
+    }
+
+    
+    public static Fraction multiplyFraction(Fraction f1, Fraction f2)
+    {
+    	int productOfNumerators;
+    	int productOfDenominators;
+    	
+    	productOfNumerators = f1.numerator * f2.numerator;
+        productOfDenominators = f1.denominator * f2.denominator;
+
+        Fraction product = new Fraction(productOfNumerators, productOfDenominators);
+        return product;
+
+    }
+    /**
+     * Divide Fractions and return the resulting Fraction
+     */
+    public Fraction divide(Fraction f1, Fraction f2)
+    {
+    	int resutingNumerators;
+    	int resutingDenominators;
+    	
+        resutingNumerators = f1.numerator * f2.denominator;
+        resutingDenominators = f1.denominator * f2.numerator;
+
+        // object to call the second constructor.
+        Fraction quotient = new Fraction(resutingNumerators, resutingDenominators);
+
+        return quotient;
+    }
+    public static Fraction divideFraction(Fraction f1, Fraction f2)
+    {
+    	int resutingNumerators;
+    	int resutingDenominators;
+    	
+        resutingNumerators = f1.numerator * f2.denominator;
+        resutingDenominators = f1.denominator * f2.numerator;
+
+        // object to call the second constructor.
+        Fraction quotient = new Fraction(resutingNumerators, resutingDenominators);
+
+        return quotient;
+}}
+
+/*
+
+                                                           Tester class
+*/
+
+
+public class TestFraction {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		 
+		 Fraction f0 = new Fraction( 4, 6 );
+		    System.out.println(f0); // expected output: 2/3
+
+		    Fraction f1 = new Fraction( 5, 8 ); // fraction 5/8
+		    Fraction f2 = new Fraction( 1, 9 );
+		    Fraction f3 = new Fraction();
+		    
+		   
+		            
+		    // Add f1 and f2 and store result in f3:
+		    f3 = f3.add( f1, f2 ); // f3 holds the result of 5/8 + 1/9
+		    System.out.println( f1 + " + " + f2 + " = " + f3 ); // uses the toString() method
+		    // expected output: 5/8 + 1/9 = 53/72
+
+		    // Subtract f1 and f2 and store result in f3:
+		    f3 = f3.subtract( f1, f2 ); // f3 holds the result of 5/8 - 1/9
+		    System.out.println( f1 + " - " + f2 + " = " + f3 );
+		    // expected output: 5/8 + 1/9 = 37/72
+
+		    // Multiply f1 and f2 and store result in f3:
+		    f3 = f3.multiply( f1, f2 ); // f3 holds the result of 5/8 x 1/9
+		    System.out.println( f1 + " * " + f2 + " = " + f3 );
+		    // expected output: 5/8 + 1/9 = 5/72
+
+		    // Divide f1 and f2 and store result in f3:
+		    f3 = f3.divide( f1, f2 ); // f3 holds the result of 5/8  1/9
+		    System.out.println( f1 + " / " + f2 + " = " + f3 );
+		    // expected output: 5/8 + 1/9 = 45/8
+
+           //Static test
+		    Fraction f4 = new Fraction(11, 21); // fraction 11/21
+			Fraction f5 = new Fraction(7, 3);
+			Fraction f6 = new Fraction();
+		   
+			f6=Fraction.addFraction(f4, f5);
+			System.out.println( f4 + " + " + f5 + " = " + f6 );
+		    
+			
+			//i had to comment this and the method out because its telling me to change instance variables and when i do it doesn rune properly
+			//f6 =Fraction.subtractFraction( f4, f5 ); 
+			//System.out.println( f4 + " - " + f5 + " = " + f6 );
+			
+			f6 =Fraction.divideFraction( f4, f5 ); 
+			System.out.println( f4 + " / " + f5 + " = " + f6 );
+			
+			f6 =Fraction.multiplyFraction( f4, f5 ); 
+			System.out.println( f4 + " * " + f5 + " = " + f6 );
+			
+		}
+		    
+		}
