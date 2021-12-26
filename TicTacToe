@@ -1,0 +1,207 @@
+import java.util.Scanner;
+
+public class TicTacToeSolutionStatic {
+	
+	static String[][] board;
+	static int column;
+	static int position;
+	static String XorO;
+	static boolean gameOn;
+
+	public static void main(String[] args) 
+	{
+		//optional to use class name in front of method in this case. with class name
+		TicTacToeSolutionStatic.initializeBoard();
+		
+		System.out.println("Welcome to the game, X goes first");
+		
+		gameOn = true;
+		
+		while(gameOn) {
+			//optional to use class name in front of method in this case. without class name
+
+			showBoard();
+			makeMove();
+			checkWin();
+			checkDraw();
+			if (gameOn == false) {//if 
+				showBoard();
+			}
+		}
+		
+	}
+	
+	// Sets up a 3 row and 3 column game board
+	public static void initializeBoard() 
+	{
+		board = new String[3][3];
+		for (int i=0;i<board.length;i++) {
+			for (int j=0;j<board[0].length;j++) {
+				board[i][j] = " ";
+			}
+		}
+		XorO = "X";
+	}
+	
+	// prints the game board at beginning of game and after each move
+	public static void showBoard() 
+	{
+		System.out.println("");
+		for(int i=0;i<board.length;i++) {
+			for(int j=0;j<board[0].length;j++) {
+				System.out.print("[" + board[i][j] + "] ");
+			}
+			System.out.println("");
+		}
+		System.out.println("");
+	}
+	/** Fills a row column position on the game board with incoming value
+	 * If row column position is filled return 'false'
+	 * @param column
+	 * @param position
+	 * @param XorO
+	 * @return
+	 */
+	public static void makeMove() 
+	{
+		if (XorO.equals("X")) {
+			System.out.print("X");
+		}
+		else if (XorO.equals("O")) {
+			System.out.print("O");
+		}
+		System.out.print(" it\'s your turn\n");
+		
+		Scanner move1 = new Scanner(System.in);
+		System.out.print("Row: ");
+		position = move1.nextInt();
+		Scanner move2 = new Scanner(System.in);
+		System.out.print("Column: ");
+		column = move2.nextInt();
+		
+		if ((position < board.length && position >= 0) && (column < board[0].length && column >= 0)) {
+			if (board[position][column].equals("X") || board[position][column].equals("O")) {
+				System.out.println("\nNot a valid move");
+			}
+			else {
+				board[position][column] = XorO;
+				if (XorO.equals("X")) {
+					XorO = "O";
+				}
+				else if (XorO.equals("O")) {
+					XorO = "X";
+				}
+			}
+		}
+		else {
+			System.out.println("\nNot a valid move");
+		}
+	}
+	
+	/**Checks for 3 in a row, in a column, on left diagonal, or right diagonal
+	 * to see if there is a winner.
+	 * Check for a winner after each move
+	 * If winner return 'true'
+	 * @param XorO
+	 * @return
+	 */
+	public static boolean checkWin() 
+	{
+		gameOn = true;
+		
+		//If X wins
+		
+		if((board[0][0].equals("X") && board[0][1].equals("X") && board[0][2].equals("X"))) {
+			System.out.println("\nX wins");
+			gameOn = false;
+		}
+		else if((board[1][0].equals("X") && board[1][1].equals("X") && board[1][2].equals("X"))) {
+			System.out.println("\nX wins");
+			gameOn = false;
+		}
+		else if((board[2][0].equals("X") && board[2][1].equals("X") && board[2][2].equals("X"))) {
+			System.out.println("\nX wins");
+			gameOn = false;
+		}
+		else if((board[0][0].equals("X") && board[1][0].equals("X") && board[2][0].equals("X"))) {
+			System.out.println("\nX wins");
+			gameOn = false;
+		}
+		else if((board[0][1].equals("X") && board[1][1].equals("X") && board[2][1].equals("X"))) {
+			System.out.println("\nX wins");
+			gameOn = false;
+		}
+		else if((board[0][2].equals("X") && board[1][2].equals("X") && board[2][2].equals("X"))) {
+			System.out.println("\nX wins");
+			gameOn = false;
+		}
+		else if((board[0][0].equals("X") && board[1][1].equals("X") && board[2][2].equals("X"))) {
+			System.out.println("\nX wins");
+			gameOn = false;
+		}
+		else if((board[2][0].equals("X") && board[1][1].equals("X") && board[0][2].equals("X"))) {
+			System.out.println("\nX wins");
+			gameOn = false;
+		}
+		
+		//If O wins
+		
+		if((board[0][0].equals("O") && board[0][1].equals("O") && board[0][2].equals("O"))) {
+			System.out.println("\nO wins");
+			gameOn = false;
+		}
+		else if((board[1][0].equals("O") && board[1][1].equals("O") && board[1][2].equals("O"))) {
+			System.out.println("\nO wins");
+			gameOn = false;
+		}
+		else if((board[2][0].equals("O") && board[2][1].equals("O") && board[2][2].equals("O"))) {
+			System.out.println("\nO wins");
+			gameOn = false;
+		}
+		else if((board[0][0].equals("O") && board[1][0].equals("O") && board[2][0].equals("O"))) {
+			System.out.println("\nO wins");
+			gameOn = false;
+		}
+		else if((board[0][1].equals("O") && board[1][1].equals("O") && board[2][1].equals("O"))) {
+			System.out.println("\nO wins");
+			gameOn = false;
+		}
+		else if((board[0][2].equals("O") && board[1][2].equals("O") && board[2][2].equals("O"))) {
+			System.out.println("\nO wins");
+			gameOn = false;
+		}
+		else if((board[0][0].equals("O") && board[1][1].equals("O") && board[2][2].equals("O"))) {
+			System.out.println("\nO wins");
+			gameOn = false;
+		}
+		else if((board[2][0].equals("O") && board[1][1].equals("O") && board[0][2].equals("O"))) {
+			System.out.println("\nO wins");
+			gameOn = false;
+		}
+		
+		return gameOn;
+	}
+	
+	/**Checks for a draw
+	 * If all board cells are filled, the game is a draw
+	 * If game is a draw, return 'true'
+	 * @return 
+	 */
+	public static boolean checkDraw() 
+	{
+		int spaceCount = 0;
+		for (int i=0;i<board.length;i++) {
+			for (int j=0;j<board[0].length;j++) {
+				if (board[i][j].equals(" ")) {
+					spaceCount++;
+				}
+			}
+		}
+		if (spaceCount == 0 && gameOn == true) {
+			System.out.println("\nThe game is a draw");
+			gameOn=false;
+		}
+		return gameOn;
+	}
+
+}
