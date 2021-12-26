@@ -1,0 +1,72 @@
+public class SavingAccountt {
+
+	private String name;
+	private double balance;
+	private double monthlyFee;
+	
+	public SavingAccountt(String name, double balance, double monthlyFee) 
+	{
+		this.name = name;
+		this.balance=balance;
+		this.monthlyFee=monthlyFee;
+	}
+	public double getBalance() 
+	{
+		return balance;
+	}
+    
+	public String getName() 
+	{
+		return name;
+	}
+	public void setName(String name) 
+	{
+		this.name=name;
+	}
+	public void addInterest(double interestRate) 
+	{
+		this.balance+=balance*interestRate/100;
+	}
+	public void endOfMonth() 
+	{
+		balance-=monthlyFee;
+		
+		
+	}}//end of SavingAccount
+  
+  /*
+                                                                     Tester Class
+  
+  */
+  
+  import java.util.Scanner;
+
+public class SavingAccountTester {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+       Scanner in = new Scanner(System.in);
+       
+       System.out.print("Please enter your name: ");
+       String name=in.nextLine();
+       
+       System.out.print("Please enter your balance: ");
+       double bal=in.nextDouble();
+       
+       System.out.print("Please enter the monthly fee: ");
+       double monthlyFee=in.nextDouble();
+       
+       SavingAccountt college = new SavingAccountt(name,bal,monthlyFee);
+    	   
+       System.out.println("Please enter the interest rate: ");
+       double interest =in.nextDouble();
+       
+       college.addInterest(interest);
+       college.endOfMonth();
+       
+       System.out.println("Hi "+ college.getName());
+       System.out.println(" Your current balance is "+college.getBalance());
+       
+	}
+
+}//end of class SavingAccountTester
