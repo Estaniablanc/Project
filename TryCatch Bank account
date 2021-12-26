@@ -1,0 +1,158 @@
+public class BankAccount {
+	 private double balance;
+
+	   /**
+	      Constructs a bank account with a zero balance.
+	   */
+	   public BankAccount ()
+	   {   
+	      balance = 0;
+	   }
+
+	   /**
+	      Sets an initial balance.
+	      @param amount the initial balance
+	 * @return 
+	   */
+	   public void initialBalance(double amount) throws IllegalArgumentException
+	   {   
+	      
+	      if (amount < 0) {
+	          throw new IllegalArgumentException("Cannot enter negative balance for new account: " + amount);}
+	      else {
+	    	  System.out.println("Sucessful new account: " + amount);
+	    	   balance = amount;
+	      }
+	      }
+	   
+	   /**
+	      Deposits money into the bank account.
+	      @param amount the amount to deposit
+	   */
+	   public void deposit(double amount) throws IllegalArgumentException
+	   {  
+
+	     double newBalance = balance + amount;
+	      
+	      if (amount < 0) {
+	          throw new IllegalArgumentException("Cannot deposit negative amount: " + amount);}
+	      else {
+	    	  System.out.println("Succesful deposit: " + amount);
+	    	  balance = newBalance;
+	      }
+
+	      }
+
+	   /**
+	      Withdraws money from the bank account.
+	      @param amount the amount to withdraw
+	   */
+	   public void withdraw(double amount) throws IllegalArgumentException
+	   {   
+	      
+
+	      if (amount > balance || amount < 0) {
+	          throw new IllegalArgumentException("Cannot withdraw this amount: " + amount);}
+	      else {
+	    	  System.out.println("Succesful withdrawal: " + amount);
+	    	  double newBalance = balance - amount;
+	          balance = newBalance;
+	      }
+	      }
+
+	   /**
+	      Gets the current balance of the bank account.
+	      @return the current balance
+	   */
+	   public double getBalance()
+	   {   
+	      return balance;
+	   }
+
+	   
+	   }
+     //Savings account
+     public class SavingsAccount {
+
+}
+
+//Tester
+
+
+import java.io.*;
+/**
+   A class to test the BankAccount class.
+*/
+public class BankAccountTester
+{
+   public static void main(String[] args)
+   {
+	   
+	   BankAccount harrysChecking = new BankAccount();
+	   
+	   
+	  
+
+	      final double badBal = -500;
+	      final double goodBal = 500;
+	      final double badDeposit = -100;
+	      final double goodDeposit = 100;
+	      final double badWithdraw = -200;
+	      final double goodWithdraw = 200;
+	      final double exceedsBalance = 1000;
+	   
+	   	try {
+	   		harrysChecking.initialBalance(badBal);
+	   	}
+	   		catch (IllegalArgumentException e)
+	   	{
+	   			System.out.println("Cannot enter negative balance for new account: " + badBal);
+	   			}
+  
+	  
+	   	try {
+	   		harrysChecking.initialBalance(goodBal);
+	   	}
+	   		catch (IllegalArgumentException e){
+	   			System.out.println("Cannot enter negative balance for new account: " + goodBal);
+	   			}
+   
+	   
+	   	try {
+	   		harrysChecking.deposit(badDeposit); }
+	   		catch (IllegalArgumentException e) {
+	   			System.out.println("Cannot deposit negative amount: " + badDeposit);
+	   			}
+
+	   
+	   	try{
+	   		harrysChecking.deposit(goodDeposit); }
+	   		catch (IllegalArgumentException e){
+	   			System.out.println("Cannot deposit this amount: " + goodDeposit);
+	   			}
+ 
+	   
+	   	try {
+	   		harrysChecking.withdraw(badWithdraw); }
+	   		catch (IllegalArgumentException e) {
+	   			System.out.println("Cannot withdraw this amount: " + badWithdraw);
+	   			}
+   
+	  
+	   	try {
+	   		harrysChecking.withdraw(goodWithdraw); }
+	   		catch (IllegalArgumentException e) {
+	   			System.out.println("Cannot withdraw this amount: " + goodWithdraw);
+	   			}
+	   	
+	 
+	   	try {
+	   		harrysChecking.withdraw(exceedsBalance); }
+	   		catch (IllegalArgumentException e){
+	   			System.out.println("Withdrawal exceeds balance: " + exceedsBalance);
+	   			}
+   
+	   		System.out.println("Account Balance is: " + harrysChecking.getBalance());
+	   		}
+		}
+     
