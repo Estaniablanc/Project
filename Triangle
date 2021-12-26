@@ -1,0 +1,44 @@
+import java.util.Scanner;
+public class Triangles {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner in = new Scanner(System.in);
+		
+	//	boolean stayInLoop=true;
+	       
+		while(true) {//stayInLoop
+			
+			System.out.println("please enter three interger of a triangle(-1 to quit)");
+			int side1= in.nextInt();
+			 if(side1==-1)
+				
+			 {
+				 break;
+			 }
+			
+			int side2 =in.nextInt();
+			if (side2==-1)
+			{
+				break;
+			}
+			
+			
+			int side3=in.nextInt();
+			if(side3==-1)
+			{
+				break;
+			}
+			  if ( ((side1 + side2) > side3) && ((side2 + side3) > side1) && ((side3 + side1) > side2 ) )
+		        {
+				  stayInLoop = true;
+				  System.out.println("This is a valid triangle");
+		        }
+			  else {
+				  System.out.println("This is not valid triangle");
+			  }
+			  
+		}// end of while 
+	}//end of main 
+
+}
