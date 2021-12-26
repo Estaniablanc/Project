@@ -1,0 +1,264 @@
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class PlayList {
+	 private String name;
+	    private ArrayList< Song > songlist;
+
+
+	    //
+	    // Constructors:
+	    //
+	    public PlayList( String nm ) {
+	        name = nm;
+	        
+	        // Allocate memory for songlist:
+	        songlist = new ArrayList< Song >();
+	    }
+	    
+	    public PlayList() {
+	        /* Nothing here yet. */
+	    }
+
+	    
+
+	    //
+	    // Methods:
+	    //
+	    public String getName() {
+	        return name;
+	    }
+	    
+	    public void addSong( Song song ) {
+	        songlist.add( song );
+	    }
+	    
+	    public void listSongs() {
+	        int num = 1;
+	        
+	        for ( Song song : songlist ) {
+	            System.out.print( num + ". " );
+	            /* Making listSongs() list more info on Songs: */
+	            System.out.println( song.getName() +
+	                                " by " + song.getArtist() +
+	                                " from " + song.getAlbum() +
+	                                " in " + song.getYear() +
+	                                " of the " + song.getGenre() + " genre");
+	            num++;
+	        }
+	    }
+
+	    // COMPLETE THIS CODE:
+	    // Add a method to shuffle the Songs in the songlist:
+	    public void shuffle() {
+	    	
+	    	Collections.shuffle(songlist);
+	    	
+	    	
+	        }
+
+
+	    // COMPLETE THIS CODE:
+	    // Add a method to sort the Songs in the songlist:
+        public void sort() {
+	    	Collections.sort(songlist);
+	    }
+
+
+
+	}
+  /*
+                                                                  song Class
+  
+  */
+  
+  
+  public class Song implements Comparable< Song > {
+		 
+	    // Use the static String variable sortBy to change what field the compareTo() method uses
+	    // to compare two Songs. By default, Songs are compared using Song name. Other possible values
+	    // for sortBy are: "artist", "album", "year" and "genre".
+	    private static String sortBy = "name"; // DO NOT CHANGE THIS LINE.
+
+	    private String name;
+	    private String artist;
+	    private String album;
+	    private int    year;
+	    private String genre;
+	    private String file;     // where the song file is stored
+	    private double length;   // obtained from file
+	    private double bitrate;  // obtained from file
+	    private String format;   // obtained from file
+
+
+	    //
+	    // Constructors:
+	    //
+	    public Song( String name, String artist, String album, int year,
+	                 String genre, String file ) {
+	        this.name   = name;
+	        this.artist = artist;
+	        this.album  = album;
+	        this.year   = year;
+	        this.genre  = genre;
+	        this.file   = file;
+	    }
+	    
+	    public Song() {
+	        /* Nothing here yet. */
+	    }
+	    
+	    
+
+	    //
+	    // Methods:
+	    //
+	    public String getName() {
+	        return name;
+	    }
+
+	    public String getArtist() {
+	        return artist;
+	    }
+
+	    public String getAlbum() {
+	        return album;
+	    }
+
+	    public int getYear() {
+	        return year;
+	    }
+
+	    public String getGenre() {
+	        return genre;
+	    }
+
+	    /**
+	     * COMPLETE THIS CODE:
+	     * Write the static method setSortBy() to set the static sortBy variable.
+	     * @param sortBy string that is one of the following: "name", "artist", "album", "year", "genre" 
+	     * 
+	     * Your method must ensure that sortBy is set to only one of the valid values above.
+	     */ 
+
+	    public static void setSortBy(String set) {
+				
+	    	if(set.equalsIgnoreCase("name")|| set.equalsIgnoreCase("artist")||set.equalsIgnoreCase("album")
+	    			|| set.equalsIgnoreCase("year")||set.equalsIgnoreCase("genre")) {
+	    		sortBy=set;
+	    	}
+	    
+	    	
+	    }
+	    /**
+	    * CHANGE THIS METHOD to do the following:
+	    * Depending on the value of the static sortBy variable, compare 
+	    * this Song vs the other Song by name, artist, album, year or genre.
+	    */
+	    @Override // Need this for Collections.sort():
+	    public int compareTo( Song other ) {
+	    	if(sortBy.equalsIgnoreCase("name")) {
+	    		return this.name.compareToIgnoreCase( other.getName() );
+	    	}
+	    	else if(sortBy.equalsIgnoreCase("artist")) {
+	    		return this.artist.compareToIgnoreCase(other.getArtist());
+	    	}
+	    	else if(sortBy.equalsIgnoreCase("album")) {
+            	return this.album.compareToIgnoreCase(other.getAlbum());
+	    	} 
+	    	else if(sortBy.equalsIgnoreCase("year")) {
+            	if(year>other.getYear()) {
+            		return 1;
+            		
+            	}
+            	else {
+            		return -1;
+            	}
+            	
+	    	}
+	    	else if(sortBy.equalsIgnoreCase("genre")) {
+            	return this.genre.compareToIgnoreCase(other.getGenre());
+	    	}
+            else {
+            	return 0;
+            }
+	        
+	            // compareToIgnoreCase() is a String class method to
+	            // compare two Strings while ignoring case.
+	    }
+	} // end class
+  
+  
+  
+   /*
+                                                                  Tester Class
+  
+  */
+  public class TestPlaylist {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		PlayList mySongs = new PlayList( "My songs" );
+	    
+        // COMPLETE THIS CODE:
+        // Construct at least 3 Songs and add them to the mySongs PlayList.
+        mySongs.addSong(new Song(" SuperBass" , "Nicki Minaj", " Pink Friday", 2010,"Rap ", "MP3"));
+        mySongs.addSong(new Song(" Warrior" , "Demi Lovato ", " Demi", 2013,"Pop", "MP4"));
+        mySongs.addSong(new Song(" Baby" , "Justin Bieber ", "My World", 2010,"Pop", "MP4"));
+        
+      
+        
+
+
+        // COMPLETE THIS CODE:
+        // List all Songs in mySongs.
+        mySongs.listSongs();
+        
+
+        // COMPLETE THIS CODE:
+        // Shuffle the Songs in mySongs and then list them all again.
+        mySongs.shuffle();
+        System.out.println("\n\t\tAfter shuffle ");
+        mySongs.listSongs();
+
+
+
+        // COMPLETE THIS CODE:
+        // Use the static Song.setSortBy() method to make Songs sortable by name.
+        // Sort the Songs in mySongs, then list them all again. 
+        Song.setSortBy("name");
+        System.out.println("\n\t\tAfter sort by name ");
+        mySongs.sort();
+        mySongs.listSongs();
+ 
+
+        // COMPLETE THIS CODE:
+        // Use the static Song.setSortBy() method to make Songs sortable by artist.
+        // Sort the Songs in mySongs, then list them all again. 
+        Song.setSortBy("Artist");
+        System.out.println("\n\t\tAfter sort by artist ");
+        mySongs.sort();
+        mySongs.listSongs();
+
+
+        // COMPLETE THIS CODE:
+        // Use the static Song.setSortBy() method to make Songs sortable by album.
+        // Sort the Songs in mySongs, then list them all again. 
+        Song.setSortBy("Album");
+        System.out.println("\n\t\tAfter sort by album ");
+        mySongs.sort();
+        mySongs.listSongs();
+
+
+        // COMPLETE THIS CODE:
+        // Use the static Song.setSortBy() method to make Songs sortable by genre.
+        // Sort the Songs in mySongs, then list them all again. 
+        Song.setSortBy("genre");
+        System.out.println("\n\t\tAfter sort by genre ");
+        mySongs.sort();
+        mySongs.listSongs();
+
+
+
+} // end class
+}
