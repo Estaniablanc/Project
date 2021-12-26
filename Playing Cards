@@ -1,0 +1,227 @@
+public class PlayingCard {
+	 // Instance variables and constants:
+	 // Instance variables and constants:
+    private int _value;   // value ranges from 1-13
+    private String _suit; // is one of: "Clubs", "Diamonds", "Hearts", "Spades"
+    public static final int CLUBS = 1;
+    public static final int DIAMONDS = 2;
+    public static final int HEARTS = 3;
+    public static final int SPADES = 4;
+
+    // Constructors:
+    // 1 - Add a constructor that takes an int value and an int suit
+    //     as input parameters to set the PlayingCard _value and _suit.
+    //     Use the setValue and setSuit methods in the constructor.
+    //     **HINT**: Complete the setValue and setSuit methods below first,
+    //               then this constructor.
+    //               Use no if statements.
+    /**
+     * Constructor
+     * @param value, an int
+     * @param suit, an int
+     */
+    PlayingCard()
+    {
+    	
+    }
+    
+    PlayingCard(int value, int suit) {
+    	setValue(value);
+    	setSuit(suit);
+    }
+    
+
+    
+    // Methods:
+    // 2 - Add a method called setValue to set the PlayingCard _value from a value
+    //     input parameter.
+    //     Add code to ensure that only valid card values will be set (1-13).
+    //     An invalid value should trigger an output statement: "Invalid card value!"
+    //     An 'if - else' structure is required.
+    /**
+     * Set PlayingCard value
+     * @param value, an int
+     */
+    public void setValue(int value) {
+    	if (value >= 1 && value <= 13)
+    		_value = value;
+    	else
+    		System.err.println("Invalid card value!");    	
+    }
+
+    
+    // 3 - Add a method called setSuit to set the PlayingCard _suit from a suit
+    //     input parameter. The suit input parameter is an int.
+    //     If suit = CLUBS, set _suit to "Clubs",
+    //     if suit = DIAMONDS, set _suit to "Diamonds" ... and so on.
+    //     Add code to ensure that only valid suit values (1-4) are used.
+    //     An invalid suit should trigger an output statement: "Invalid card suit!"
+    //     An 'if - else if - else if - else' structure is required.
+    /**
+     * Set PlayingCard suit
+     * @param suit, an int
+     */
+    public void setSuit(int suit) {
+    	if (suit == CLUBS)
+    		_suit = Color.BLACK+"\u2663";//
+    	else if (suit == DIAMONDS)
+    		_suit = Color.RED+"\u2666";//
+    	else if (suit == HEARTS)
+    		_suit = Color.RED+"\u2665";//
+    	else if (suit == SPADES)
+    		_suit =Color.BLACK+"\u2660";
+    	else
+    		System.err.println("Invalid card suit!");
+    }
+        
+    
+    // 4 - Add a method called toString to return a String containing the PlayingCard's
+    //     _value and _suit in the form "_value of _suit", e.g.,
+    //     "2 of Clubs" or "Queen of Hearts".
+    //     Some values must be translated to a name:
+    //           if _value = 1, "Ace",
+    //           if _value = 11, "Jack",
+    //           if _value = 12, "Queen",
+    //           if _value = 13, "King.
+    //     An 'if - else if - else if - else if - else' structure is required.
+    /**
+     * Return PlayingCard's _value and _suit as a String
+     * @return PlayingCard as "_value of _suit"
+     */
+    public String toString() {
+    	String vl;
+    	if (_value == 1)
+    		vl = Color.BLACK+"A";
+    	else if (_value == 11)
+    		vl = Color.RED+"J";
+    	else if (_value == 12)
+    		vl = Color.RED+"Q";
+    	else if (_value == 13)
+    		vl = Color.BLACK+"K";
+    	else vl = "" + _value;
+    	
+    	return vl +"\n" + _suit+"\n";
+    }
+    
+    
+} // end of class PlayingCard
+
+/*
+                                                                                       color Class
+
+*/
+public class Color {
+
+	
+		   
+		    
+		    public static final String RED = "\033[0;31m";     // RED
+		    public static final String BLACK = "\033[0;30m";
+	
+
+}//end of class color
+
+
+/*
+                                                                                      tester Class
+
+*/
+public class TestPlayingCard {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		 
+		        // 1 - Construct an array of 52 PlayingCard objects called deck.
+               PlayingCard [] deck = new PlayingCard[52];
+
+
+
+
+		        // 2 - Construct the 52 PlayingCards in a standard deck of cards
+                //PlayingCard one = new PlayingCard();
+                
+               
+               
+		        //     (https://en.wikipedia.org/wiki/Standard_52-card_deck)
+		        //     and add them to the deck. You must use a loop (or
+		        //     nested loops).
+                int x = 0;
+                for(int values =1; values <=13; values++) {
+                	
+                	for(int suit =1; suit <=4; suit++) {
+                		PlayingCard one = new PlayingCard();
+                		one.setSuit(suit);
+                		one.setValue(values);
+                		deck[x]= one;
+                		System.out.println(deck[x]);
+                		x++;
+                	}
+                }
+                		
+                		
+                		//toatl of 52 repetitions  to construc 52 unique cards
+                		//after contrustion  each card 
+                		
+                		// complete the playingcard class, then this code
+                		
+                		
+                	
+
+		        
+
+
+
+		        // 3 - Display the value and suit of every PlayingCard in the deck.
+		        //     You must use a loop.
+		        for(int i=0;i<52; i++) {
+		        	System.out.println(deck[i]);
+		        	
+		        }
+		        
+		        
+
+		        
+
+		    }
+		}//end of class TestPlaying Card
+
+
+
+/*
+                                                                                      Array tester Class
+
+*/
+
+public class PlayingCardArrayList {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ArrayList<PlayingCard> deck = new ArrayList<>();
+	   
+
+
+	  
+
+	        
+	       
+	    for (int num = 1; num<14; num++)
+	    {
+	    for(int suits = 1; suits<5; suits++)
+	    {
+	    PlayingCard one = new PlayingCard();
+	    one.setSuit(suits);
+	    one.setValue(num);
+	    deck.add(one);
+	    
+	    //deck.add(one.toString());
+	    System.out.println(one +"   ");
+	    }
+	    
+	   
+	    }
+	    
+	   
+	}
+
+	
+	}//end of class PlayingCardArrayList
