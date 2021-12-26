@@ -1,0 +1,299 @@
+public class BankAccount implements Measurable1{
+	/**
+	   A bank account has a balance that can be changed by 
+	   deposits and withdrawals.
+	*/
+	
+	   private double balance;
+	  
+	   /**
+	      Constructs a bank account with a zero balance.
+	   */
+	   public BankAccount()
+	   {   
+	      balance = 0;
+	   }
+
+	   /**
+	      Constructs a bank account with a given balance.
+	      @param initialBalance the initial balance
+	   */
+	   public BankAccount(double initialBalance)
+	   {   
+	      balance = initialBalance;
+	   }
+
+	   /**
+	      Deposits money into the bank account.
+	      @param amount the amount to deposit
+	   */
+	   public void deposit(double amount)
+	   {  
+	      double newBalance = balance + amount;
+	      balance = newBalance;
+	   }
+
+	   /**
+	      Withdraws money from the bank account.
+	      @param amount the amount to withdraw
+	   */
+	   public void withdraw(double amount)
+	   {   
+	      double newBalance = balance - amount;
+	      balance = newBalance;
+	   }
+
+	   /**
+	      Gets the current balance of the bank account.
+	      @return the current balance
+	   */
+	   public double getBalance()
+	   {   
+	      return balance;
+	   }
+	   public double getMeasure()
+	   {
+		return balance;
+		}}
+	   /**
+     
+                                                                Measurable class
+     
+     */
+     public interface Measurable1
+{
+   double getMeasure();
+}
+      /**
+     
+                                                              country class
+     
+     */
+     
+     public class Country implements Measurable1{
+	
+	   private String name;
+	   private double area;
+
+	   /**
+	      Construct a country with name and area.
+	      @param name country's name
+	      @param area total area of country
+	   */
+	   public Country(String name, double area)
+	   {
+	      this.name = name;
+	      this.area = area;
+	   }
+
+	   /**
+	      Measurable interface method to retrieve measure.
+	      @return the measured area
+	   */
+	  
+	
+public double getMeasure()
+{
+	return area;
+}}
+/**
+     
+                                                              data class
+     
+     */
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Data {
+	
+	
+	
+	
+	
+ public static double average(Measurable1[] objects)
+ {
+    double sum = 0;
+    for (Measurable1 obj : objects)
+    {
+       sum = sum + obj.getMeasure();
+    }
+    if (objects.length > 0)
+    {
+       return sum / objects.length;
+    }
+    else
+    {
+       return 0;
+    }
+ }
+
+ 
+ public static double max(Measurable1[] objects)
+ {
+    double max = 0;
+	   if (objects.length == 0)
+    {
+       return 0;
+    }
+    max = objects[0].getMeasure();
+    for (Measurable1 obj : objects)
+    {
+       if (obj.getMeasure() > max)
+       {
+          max = obj.getMeasure();
+       }
+    }
+
+    return max;
+ }
+ public static double min(Measurable1[] objects) {
+	 double min = 999;
+	   if (objects.length == 0)
+  {
+     return 0;
+  }
+  min = objects[0].getMeasure();
+  for (Measurable1 obj : objects)
+  {
+     if (obj.getMeasure() < min)
+     {
+        min = obj.getMeasure();
+     }}
+return min;}}
+  
+     /**
+     
+                                                              viewer class
+     
+     */
+     
+     
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+/**
+   This program demonstrates how an action listener can access 
+   a variable from a surrounding block.
+*/
+public class Viewer
+{
+
+   private static final int FRAME_WIDTH = 300;
+   private static final int FRAME_HEIGHT = 300;
+   private static final String METRIC1 = "Max";
+   private static final String METRIC2 = "Min";
+   private static final String METRIC3 = "Avg";
+
+   public static void main(String[] args)
+   {
+	      Measurable1[] accounts = new Measurable1[3];
+	      accounts[0] = new BankAccount(0);
+	      accounts[1] = new BankAccount(10000);
+	      accounts[2] = new BankAccount(2000);
+
+		   
+	      Measurable1[] countries = new Measurable1[3];
+	      countries[0] = new Country("Uruguay", 176220);
+	      countries[1] = new Country("Thailand", 513120);
+	      countries[2] = new Country("Belgium", 30510);
+
+	      JPanel panel = new JPanel();
+	      
+//Listener for BankAccount Button Minimum    
+	  JFrame frame = new JFrame();
+      JButton button = new JButton("Get Bank Account " + METRIC2 + " Balance");
+      panel.add(button);
+      ActionListener listener = new ButtonListener(accounts,METRIC2);
+      button.addActionListener(listener);
+      
+//Listener for BankAccount Button Maximum 
+      
+      JButton button1 = new JButton("Get Bank Account " + METRIC1 + " Balance");
+      ActionListener listener2 = new ButtonListener(accounts,METRIC1);
+      button1.addActionListener(listener2);
+      panel.add(button1);
+      frame.add(panel);
+      
+      
+//Listener for BankAccount Button Average 
+      JButton button2 = new JButton("Get Bank Account " + METRIC3 + " Balance");
+      ActionListener listener3 = new ButtonListener(accounts,METRIC3);
+      button2.addActionListener(listener3);
+      panel.add(button2);
+      frame.add(panel);
+//Listener for Country Button Minimum    
+      JButton button3 = new JButton("Get Country " + METRIC2 + " Area");
+      ActionListener listener4 = new ButtonListener(countries,METRIC2);
+      button3.addActionListener(listener4);
+      panel.add(button3);
+      frame.add(panel);
+//Listener for Country Button Maximum    
+      JButton button4 = new JButton("Get Country " + METRIC1 + " Area");
+      ActionListener listener5 = new ButtonListener(countries,METRIC1);
+      button4.addActionListener(listener5);
+      panel.add(button4);
+      frame.add(panel);
+//Listener for country Button Average   
+      JButton button5 = new JButton("Get Country " + METRIC3 + " Area");
+      ActionListener listener6 = new ButtonListener(countries,METRIC3);
+      button5.addActionListener(listener6);
+      panel.add(button5);
+      frame.add(panel);
+      
+      
+      frame.add(panel);
+      frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
+      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      frame.setVisible(true);
+      
+   }
+}
+ /**
+     
+                                                              Button listener class
+     
+     */
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
+
+
+
+//add code to constructor that uses metric as an incoming string
+
+class ButtonListener implements ActionListener
+{
+   private Measurable1[] objects;
+   private String Metric;
+   
+
+   public ButtonListener(Measurable1[] objects,String Metric)
+   {
+      this.objects = objects;
+      this.Metric=Metric;
+   }
+
+   public void actionPerformed(ActionEvent event)
+   {
+     	  double result = 0;
+
+     	 if(Metric=="Max") {
+			   result=Data.max(objects);
+			   System.out.println(result);
+			   
+		   }
+			   if(Metric=="Min") {
+				   result=Data.min(objects);
+				   System.out.println(result);
+			   }
+				   if(Metric=="Avg") {
+					   result=Data.average(objects);
+					   System.out.println(result);
+
+ 
+   }
+}}
