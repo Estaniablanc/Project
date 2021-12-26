@@ -1,0 +1,141 @@
+
+public class Cat {
+
+	private String name;
+	private int age;
+	private String breed;
+	
+	
+	public Cat(String name, int age, String breed){
+		this.name=name;
+		this.age=age;
+		this.breed=breed;
+	}
+	
+	public String getname() {
+		return breed;
+		
+	}
+    public int getAge() {
+		return age;
+		
+	}
+    public String getBreed() {
+		return breed;
+		
+	}
+    public String toString() {
+		String catData= "Name: "+name+", "
+				+"Age: "+age+", "
+				+"breed: "+breed;
+		return catData;
+		
+    	
+    }
+}
+
+
+
+
+ /**
+     
+                                                             Petstore class
+     
+     */
+     
+     import java.util.ArrayList;
+
+public class PetStore {
+
+	//<obj type> name = (saying ur making a new one)
+	private ArrayList<Cat>cats=new ArrayList<Cat>();
+	private final int MAXCAT=10;//capacity
+	
+	
+	
+	
+	public void addCat(Cat cat) {
+		cats.add(cat);
+	}
+
+	public void listCats() {
+		for(int i=0;i<cats.size();i++) {
+			System.out.println(i+" - "+cats.get(i).toString());
+		}
+	}
+    public void removeCats(int catIdx) {
+    	cats.remove(catIdx);
+		
+	}
+	
+public static void main(String[] args) {
+
+	PetStore myStore = new PetStore();
+	
+	Cat fuzzy =new Cat("Fuzzy",5,"Mix");
+	myStore.addCat(fuzzy);
+	
+	Cat skitty =new Cat("skitty",15,"Manx");
+	myStore.addCat(skitty);
+	
+	//another way to add the cat
+	myStore.addCat(new Cat("ben",12,"Strange"));
+	
+	myStore.listCats();
+	myStore.removeCats(1);
+	System.out.println("\npet store now have the following: ");
+	myStore.listCats();
+	
+	myStore.addCat(new Cat("John",2,"persian"));
+	myStore.addCat(new Cat("Zack",8,"bengal"));
+	myStore.addCat(new Cat("Leo",4,"maine"));
+	myStore.addCat(new Cat("Milo",1,"british"));
+	myStore.addCat(new Cat("Simba",5,"siamese"));
+	myStore.addCat(new Cat("Kitty",8,"ragdoll"));
+	myStore.addCat(new Cat("Max",39,"Scottish"));
+	myStore.addCat(new Cat("Jay",40,"exotic"));
+	//myStore.addCat(new Cat("Garf",38,"tuna"));//im not sure why iam able to add this one
+	myStore.listCats();
+	
+	
+	myStore.removeCats(1);
+	System.out.println("\npet store now have the following: ");
+	myStore.listCats();
+	
+	myStore.removeCats(1);
+	System.out.println("\npet store now have the following: ");
+	myStore.listCats();
+	
+	myStore.removeCats(1);
+	System.out.println("\npet store now have the following: ");
+	myStore.listCats();
+	
+	myStore.removeCats(1);
+	System.out.println("\npet store now have the following: ");
+	myStore.listCats();
+	
+	myStore.removeCats(1);
+	System.out.println("\npet store now have the following: ");
+	myStore.listCats();
+	
+	myStore.removeCats(1);
+	System.out.println("\npet store now have the following: ");
+	myStore.listCats();
+	
+	myStore.removeCats(1);
+	System.out.println("\npet store now have the following: ");
+	myStore.listCats();
+	
+	myStore.removeCats(1);
+	System.out.println("\npet store now have the following: ");
+	myStore.listCats();
+	
+	myStore.removeCats(1);
+	System.out.println("\npet store now have the following: ");
+	myStore.listCats();
+	
+	
+	myStore.removeCats(0);
+	System.out.println("\npet store now have the following: ");
+	myStore.listCats();
+	}}
