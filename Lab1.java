@@ -1,5 +1,3 @@
-package edu.monmouth.lab1;
-
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 
