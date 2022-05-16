@@ -1,4 +1,4 @@
-package edu.monmouth.lab1;
+
 
 public class Lab1Constants {
 	  public static final int STUDENTSIZE=3;
